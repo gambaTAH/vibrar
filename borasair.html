@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Bora sair?</title>
+
+<style>
+
+body{
+background:red;
+color:white;
+font-family:Arial;
+text-align:center;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+margin:0;
+overflow:hidden;
+transition:1s;
+}
+
+h1{
+font-size:60px;
+}
+
+button{
+background:red;
+color:white;
+border:3px solid white;
+padding:20px 40px;
+font-size:25px;
+border-radius:12px;
+cursor:pointer;
+margin:10px;
+}
+
+#foto{
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(0.1);
+width:100vw;
+height:100vh;
+object-fit:cover;
+transition:transform 6s linear;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Bora sair?</h1>
+
+<div id="botoes">
+<button onclick="aceitou()">Sim</button>
+<button onclick="criarSim()">Não</button>
+</div>
+
+<img id="foto" src="OIP.webp">
+
+<audio id="musica" src="pou-estourado_zIWCpMy (1).mp3"></audio>
+
+<script>
+
+function aceitou(){
+
+document.body.style.background="green"
+
+document.getElementById("botoes").style.display="none"
+
+let foto=document.getElementById("foto")
+
+foto.style.display="block"
+
+setTimeout(()=>{
+foto.style.transform="translate(-50%,-50%) scale(1)"
+},50)
+
+document.getElementById("musica").play()
+
+abrirTelaCheia()
+
+}
+
+function criarSim(){
+
+let area=document.getElementById("botoes")
+
+let novoSim=document.createElement("button")
+
+novoSim.innerText="Sim"
+
+novoSim.onclick=aceitou
+
+area.appendChild(novoSim)
+
+}
+
+function abrirTelaCheia(){
+
+let doc=document.documentElement
+
+if(doc.requestFullscreen){
+doc.requestFullscreen()
+}
+
+}
+
+</script>
+
+</body>
+</html>
